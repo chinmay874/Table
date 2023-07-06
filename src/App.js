@@ -1,23 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const[number,setNumber]=useState()
+  const tablearr=[1,2,3,4,5,6,7,8,9,10]
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='tablecontainer'>
+      <input className='inputnumber' placeholder='Enter any Number' onChange={(e)=>setNumber(e.target.value)}  ></input>
+      {
+        number && (
+          <table className='table'>
+            <thead>
+              <tr>
+              <th>Table of {number}</th>
+              </tr>
+            </thead>
+        {tablearr.map((data,index)=>(
+
+            <tbody>
+              <tr key={index}>
+                <td>{number}X{data}={data*number}</td>
+              </tr>
+            </tbody>
+        ))}
+        </table>
+        )
+        }
+      </div>
     </div>
   );
 }
